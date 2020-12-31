@@ -1,0 +1,10 @@
+Gunpowder Czarny, 90, 180, 
+Gunpowder Zielony, 70, 180, 
+Lapacho, 96, 600, 
+Mięta, 96, 300, 
+Mięta, 50, 350, 
+Mięta, 50, 50, 
+Mięta, 96, 400, 
+Sen o smoku, 96, 180, ostra: z pi
+Uśmiech Ananasa, 96, 300, 
+Zielone Marzenie, 70, 180,

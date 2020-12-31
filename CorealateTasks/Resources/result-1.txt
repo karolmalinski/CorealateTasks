@@ -1,0 +1,9 @@
+Zielone Marzenie, zielona, 70, 180,
+Uśmiech Ananasa, owocowa, 96, 300, 
+Sen o smoku, czarna, 96, 180, ostra: z pi
+Mięta, napar, 96, 300, 
+Lapacho, napar, 96, 600, 
+Gunpowder Zielony, zielona, 70, 180, 
+Gunpowder Czarny, czarne, 90, 180, 
+
+# Nazwa herbaty, typ herbaty, temperatura

@@ -1,0 +1,9 @@
+# Nazwa herbaty, typ herbaty, temperatura
+
+Sen o smoku, czarna, 96, 180
+Gunpowder Czarny, czarne, 90, 180
+Lapacho, napar, 96, 600
+Mięta, napar, 96, 300
+Uśmiech Ananasa, owocowa, 96, 300
+Gunpowder Zielony, zielona, 70, 180
+Zielone Marzenie, zielona, 70, 180
