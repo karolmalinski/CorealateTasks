@@ -5,6 +5,7 @@ Mięta, 96, 300,
 Mięta, 50, 350, 
 Mięta, 50, 50, 
 Mięta, 96, 400, 
-Sen o smoku, 96, 180, ostra: z pi
+Sen o smoku, 96
+Jakiś inny błąd
 Uśmiech Ananasa, 96, 300, 
 Zielone Marzenie, 70, 180,

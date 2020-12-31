@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CorealateTasks
 {
@@ -12,9 +8,9 @@ namespace CorealateTasks
 
         //https://stackoverflow.com/questions/27181774/get-resources-folder-path-c-sharp
 
-        private static readonly string PATH = GetFilePath("tea-data.txt");
-        private static readonly string PATH_INPUT = GetFilePath("input-file.txt");
-
+        public static readonly string PATH = GetFilePath("tea-data.txt");
+        public static readonly string PATH_INPUT = GetFilePath("input-file.txt");
+        public static readonly string PATH_TOUAREG_INPUT = GetFilePath("touareg-input-file.txt");
 
         static void Main(string[] args)
         {
@@ -32,7 +28,8 @@ namespace CorealateTasks
             Console.WriteLine("2 - sort the record");
             Console.WriteLine("3 - do nothing (ignore the input)");
             Console.WriteLine("4 - make a tea");
-            Console.WriteLine("5 - Make several teas");
+            Console.WriteLine("5 - make several teas");
+            Console.WriteLine("6 - make a Touareg tea");
             Console.WriteLine("");
             Console.Write("SELECT THE OPTION: ");
 
@@ -96,6 +93,23 @@ namespace CorealateTasks
                         Console.WriteLine("FAILED =( Any file has not been created.\r\n");
                     }
                     Console.ForegroundColor = ConsoleColor.White;
+                    Menu();
+                    break;
+
+                case '6':
+                    Console.Clear();
+                    string result = FileProcessor.MakeTouaregTea(PATH, PATH_TOUAREG_INPUT);
+                    if (result.Contains("Congratulations"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    Console.WriteLine(result);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
                     Menu();
                     break;
 

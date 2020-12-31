@@ -4,8 +4,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CorealateTasks
 {
@@ -113,6 +111,7 @@ namespace CorealateTasks
                     counter++;
                     string[] teaParams = tea.Split(',');
 
+                    //Check wether the array has three items
                     if (teaParams.Length < 3)
                     {
                         results.Add($"Wrong data no. {counter}.");
@@ -150,7 +149,7 @@ namespace CorealateTasks
 
                 File.WriteAllLines(outputPath, results);
                 return true;
-            } 
+            }
             catch (Exception e)
             {
                 Debug.Print(e.Message);
@@ -159,6 +158,106 @@ namespace CorealateTasks
 
         }
 
+        /// <summary>
+        /// Makes a Touareg tea
+        /// </summary>
+        /// <param name="path">Database path</param>
+        /// <param name="inputPath">Input file path</param>
+        /// <returns></returns>
+        public static string MakeTouaregTea(string path, string inputPath)
+        {
+            try
+            {
+                //Read all lines from the given file
+                string[] lines = File.ReadAllLines(inputPath);
+
+                //Determines new name for the output file
+                string outputPath = Path.GetDirectoryName(path) + @"\result-6.txt";
+
+                //Some validation
+                if (lines.Length != 2)
+                {
+                    string err = "The recipe contains wrong quantity of ingredients.";
+                    File.WriteAllText(outputPath, err);
+                    return err;
+                }
+
+                if (CheckIngredient(path, /*mint*/ lines[0], "water") && CheckIngredient(path, /*tea*/ lines[1], "Mięta"))
+                {
+                    string res = "Congratulations, perfect Touareg.";
+                    File.WriteAllText(outputPath, res);
+                    return res;
+                }
+                else
+                {
+                    string res = "Sadly, your Touareg is ruined.";
+                    File.WriteAllText(outputPath, res);
+                    return res;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return "FAILED =(";
+            }
+
+        }
+        /// <summary>
+        /// Checks ingeridients of Touareg tea
+        /// </summary>
+        /// <param name="path">Path to the database file</param>
+        /// <param name="ingredient">String with an ingeridient</param>
+        /// <param name="liquid">The liquid used to prepare the tea</param>
+        /// <returns></returns>
+        private static bool CheckIngredient(string path, string ingredient, string liquid)
+        {
+            //beverage validation
+            string[] beverage = ingredient.Split(',');
+            if (beverage.Length < 4)
+            {
+                Debug.Print("Wrong given data.");
+                return false;
+            }
+            
+            //Validate ingeridients
+            if (beverage[1].Trim() == "water" && beverage[0].Trim() != "Mięta")
+            {
+                return false;
+            }
+            else if (beverage[1].Trim() == "Mięta" && beverage[0].Trim() != "Gunpowder Zielony")
+            {
+                return false;
+            }
+            else if (beverage[0].Trim() != "Mięta" && beverage[0].Trim() != "Gunpowder Zielony")
+            {
+                return false;
+            }
+
+            //Get beverage params
+            int temp;
+            int time;
+            if (!int.TryParse(beverage[2].Trim(), out temp) || !int.TryParse(beverage[3].Trim(), out time) || beverage[1].Trim() != liquid)
+            {
+                return false;
+            }
+
+            //Chack the ingredient
+            if (CompareParameters(path, beverage[0].Trim(), temp, time) != "perfect")
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Comapres tea parameters against stored into database
+        /// </summary>
+        /// <param name="path">Database file</param>
+        /// <param name="name">Tea name</param>
+        /// <param name="temp">Liquid temperature</param>
+        /// <param name="time">Bawering time in seconds</param>
+        /// <returns></returns>
         public static string CompareParameters(string path, string name, int temp, int time)
         {
             try

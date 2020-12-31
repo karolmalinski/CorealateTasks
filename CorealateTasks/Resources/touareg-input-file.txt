@@ -1,0 +1,2 @@
+Mięta, water, 96, 300
+Gunpowder Zielony, Mięta, 70, 180
