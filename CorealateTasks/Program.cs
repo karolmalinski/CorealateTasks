@@ -36,6 +36,7 @@ namespace CorealateTasks
             char option = Console.ReadKey().KeyChar;
             while (option == '3')
             {
+                //https://stackoverflow.com/questions/5195692/is-there-a-way-to-delete-a-character-that-has-just-been-written-using-console-wr
                 Console.Write("\b \b");
                 option = Console.ReadKey().KeyChar;
             }
