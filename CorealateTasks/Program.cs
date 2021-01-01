@@ -6,8 +6,6 @@ namespace CorealateTasks
     class Program
     {
 
-        //https://stackoverflow.com/questions/27181774/get-resources-folder-path-c-sharp
-
         public static readonly string PATH = GetFilePath("tea-data.txt");
         public static readonly string PATH_INPUT = GetFilePath("input-file.txt");
         public static readonly string PATH_TOUAREG_INPUT = GetFilePath("touareg-input-file.txt");
@@ -171,6 +169,7 @@ namespace CorealateTasks
             }
         }
 
+
         /// <summary>
         /// Determines resource path
         /// </summary>
@@ -178,7 +177,12 @@ namespace CorealateTasks
         /// <returns></returns>
         private static string GetFilePath(string v)
         {
+#if DEBUG
+            //https://stackoverflow.com/questions/27181774/get-resources-folder-path-c-sharp
             return string.Format("{0}Resources\\" + v, Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
+#else
+            return Path.Combine(Directory.GetCurrentDirectory(), v);
+#endif
         }
     }
 }
